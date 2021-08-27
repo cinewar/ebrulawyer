@@ -1,0 +1,133 @@
+.footer {
+  background: #101010;
+  padding: 20px 80px;
+}
+
+.footer .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.footer .container .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 150px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer .container .contact {
+  margin: 0;
+  padding: 0;
+}
+
+.footer .container .contact li {
+  list-style: none;
+}
+
+.footer .container .contact .title {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  /* identical to box height */
+  text-transform: capitalize;
+  color: #ff8066;
+  list-style: none;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ff8066;
+}
+
+.footer .container .contact .list-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 5px;
+}
+
+.footer .container .contact .list-wrapper .icon {
+  width: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 8px;
+}
+
+.footer .container .contact .list-wrapper .text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  /* identical to box height */
+  letter-spacing: 0.085em;
+  color: #b6b6b6;
+}
+
+.footer .container .site-map {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer .container .site-map .title {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  /* identical to box height */
+  text-transform: capitalize;
+  color: #ff8066;
+  list-style: none;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ff8066;
+}
+
+.footer .container .site-map .link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer .container .site-map .link .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff8066;
+  margin-right: 8px;
+}
+
+.footer .container .site-map .link .text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  /* identical to box height */
+  letter-spacing: 0.085em;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.copy-right {
+  background: #4d4d4d;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 40px;
+  /* identical to box height */
+  color: #b6b6b6;
+  text-align: center;
+}
+/*# sourceMappingURL=footer.css.map */

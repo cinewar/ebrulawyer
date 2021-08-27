@@ -1,0 +1,107 @@
+$primary-color: #ff8066;
+
+.footer {
+  background: #101010;
+  padding: 20px 80px;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    .logo {
+      display: flex;
+      width: 150px;
+      align-items: center;
+    }
+    .contact {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+      }
+      .title {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 28px;
+        /* identical to box height */
+        text-transform: capitalize;
+        color: #ff8066;
+        list-style: none;
+        margin-bottom: 10px;
+        border-bottom: 1px solid $primary-color;
+      }
+      .list-wrapper {
+        display: flex;
+        align-items: center;
+        padding-bottom: 5px;
+        .icon {
+          width: 30px;
+          display: flex;
+          margin-right: 8px;
+        }
+        .text {
+          font-family: Poppins;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          /* identical to box height */
+
+          letter-spacing: 0.085em;
+
+          color: #b6b6b6;
+        }
+      }
+    }
+    .site-map {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      .title {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 28px;
+        /* identical to box height */
+        text-transform: capitalize;
+        color: #ff8066;
+        list-style: none;
+        margin-bottom: 10px;
+        border-bottom: 1px solid $primary-color;
+      }
+      .link {
+        display: flex;
+        align-items: center;
+        .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: $primary-color;
+          margin-right: 8px;
+        }
+        .text {
+          font-family: Poppins;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          /* identical to box height */
+
+          letter-spacing: 0.085em;
+
+          cursor: pointer;
+          color: rgba(255, 255, 255, 0.66);
+        }
+      }
+    }
+  }
+}
+.copy-right {
+  background: #4d4d4d;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 40px;
+  /* identical to box height */
+
+  color: #b6b6b6;
+  text-align: center;
+}

@@ -1,271 +1,361 @@
-import { Suspense } from "react"
+import React, { Suspense, useEffect, useState } from "react"
 import { Image, Link, BlitzPage, useMutation, Routes } from "blitz"
 import Layout from "app/core/layouts/Layout"
-import { useCurrentUser } from "app/core/hooks/useCurrentUser"
-import logout from "app/auth/mutations/logout"
-import logo from "public/logo.png"
+import { cards } from "app/core/components/common/cards"
+import { ReactComponent as RightArrow } from "../../public/right-arrow.svg"
+import { ReactComponent as LeftArrow } from "../../public/left-arrow.svg"
+import { ReactComponent as MoreArrow } from "../../public/more-arrow.svg"
+import { AnimatePresence, motion } from "framer-motion"
+import { wrap } from "@popmotion/popcorn"
 
 /*
  * This file is just for a pleasant getting started page for your new app.
  * You can delete everything in here and start from scratch if you like.
  */
 
-const UserInfo = () => {
-  const currentUser = useCurrentUser()
-  const [logoutMutation] = useMutation(logout)
+// const UserInfo = () => {
+//   const currentUser = useCurrentUser()
+//   const [logoutMutation] = useMutation(logout)
 
-  if (currentUser) {
-    return (
-      <>
-        <button
-          className="button small"
-          onClick={async () => {
-            await logoutMutation()
-          }}
-        >
-          Logout
-        </button>
-        <div>
-          User id: <code>{currentUser.id}</code>
-          <br />
-          User role: <code>{currentUser.role}</code>
-        </div>
-      </>
-    )
-  } else {
-    return (
-      <>
-        <Link href={Routes.SignupPage()}>
-          <a className="button small">
-            <strong>Sign Up</strong>
-          </a>
-        </Link>
-        <Link href={Routes.LoginPage()}>
-          <a className="button small">
-            <strong>Login</strong>
-          </a>
-        </Link>
-      </>
-    )
-  }
-}
+//     </div>
+//   )
+// }
+
+//   if (currentUser) {
+//     return (
+//       <>
+//         <button
+//           className="button small"
+//           onClick={async () => {
+//             await logoutMutation()
+//           }}
+//         >
+//           Logout
+//         </button>
+//         <div>
+//           User id: <code>{currentUser.id}</code>
+//           <br />
+//           User role: <code>{currentUser.role}</code>
+//         </div>
+//       </>
+//     )
+//   } else {
+//     return (
+//       <>
+//         <Link href={Routes.SignupPage()}>
+//           <a className="button small">
+//             <strong>Sign Up</strong>
+//           </a>
+//         </Link>
+//         <Link href={Routes.LoginPage()}>
+//           <a className="button small">
+//             <strong>Login</strong>
+//           </a>
+//         </Link>
+//       </>
+//     )
+//   }
+// }
 
 const Home: BlitzPage = () => {
+  const [[page, direction], setPage] = useState([0, 0])
+  const [newCards, setnewCards] = useState<any>([])
+
+  useEffect(() => {
+    setnewCards(cards)
+  }, [])
+
+  const imageIndex = wrap(0, cards.length, page)
+
+  const paginate = (newDirection) => {
+    console.log(page, newDirection)
+
+    setPage([page + newDirection, newDirection])
+  }
+
+  const [seconds, setSeconds] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((seconds) => seconds + 1)
+      console.log(seconds)
+      setPage([page + 1, 1])
+      console.log(page, direction)
+    }, 6000)
+    return () => clearInterval(interval)
+  }, [page])
+
   return (
-    <div className="container">
-      <main>
-        <div className="logo">
-          <Image src={logo} alt="blitzjs" />
+    <div className="home">
+      <section
+        // key={page}
+        // custom={direction}
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 1 }}
+        // exit={{ opacity: 0 }}
+        // transition={{
+        //   opacity: { duration: 1.5 },
+        // }}
+        // drag="x"
+        // dragConstraints={{ left: 0, right: 0 }}
+        // dragElastic={1}
+        className="hero"
+      >
+        {newCards.length > 0 && (
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={page}
+              custom={direction}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                opacity: { duration: 2 },
+              }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={1}
+            >
+              <div className="hero-text-wrapper">
+                <h1 className="hero-title">{newCards[imageIndex]?.title}</h1>
+                <h3 className="hero-subtitle">{newCards[imageIndex]?.subtitle}</h3>
+                <p className="hero-body">{newCards[imageIndex]?.body}</p>
+              </div>
+              <div className="carousel">
+                <Image
+                  src={newCards[imageIndex]?.img}
+                  layout="fill"
+                  objectPosition="bottom center"
+                  objectFit="cover"
+                  alt="logo"
+                />
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        )}
+        <div className="dots-sliderButtons">
+          <div className="buttons-wrapper">
+            <motion.span
+              onClick={() => {
+                paginate(-1)
+              }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.8 }}
+              className="slider-button"
+            >
+              <RightArrow />
+            </motion.span>
+            <motion.span
+              onClick={() => {
+                paginate(1)
+              }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.8 }}
+              className="slider-button"
+            >
+              <LeftArrow />
+            </motion.span>
+          </div>
+          <div className="dots-wrapper">
+            {newCards.map((card, index) => {
+              return (
+                <motion.span
+                  key={index}
+                  whileTap={{ scale: 0.8 }}
+                  whileHover={{ scale: 1.4 }}
+                  onClick={() => setPage([index, 1])}
+                  className={"dot " + (imageIndex === index ? " active" : "")}
+                ></motion.span>
+              )
+            })}
+          </div>
         </div>
-        <p>
-          <strong>Congrats!</strong> Your app is ready, including user sign-up and log-in.
-        </p>
-        <div className="buttons" style={{ marginTop: "1rem", marginBottom: "1rem" }}>
-          <Suspense fallback="Loading...">
-            <UserInfo />
-          </Suspense>
+      </section>
+      <section className="about-work">
+        <div className="container">
+          <div className="about-work-wrapper">
+            <div className="image">
+              <Image
+                src="/about-work-1.jpg"
+                layout="fill"
+                objectPosition="bottom center"
+                objectFit="cover"
+                alt="logo"
+              />
+            </div>
+            <div className="text-wrapper">
+              <h1 className="about-work-title">Lorem ipsum dolor sit.</h1>
+              <h3 className="about-work-subtitle">Lorem ipsum dolor sit amet.</h3>
+              <p className="about-work-body">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem, maxime maiores
+                praesentium nobis nostrum est. Consequuntur ad consequatur ipsum dignissimos
+                eveniet, temporibus doloremque corrupti est quibusdam non harum quos quia odio,
+                aspernatur, minus asperiores libero dolores! Perspiciatis officiis, impedit
+                inventore commodi harum quaerat beatae nulla soluta minima laborum voluptas est
+                omnis. Ducimus, odio esse. Nam corrupti ad odit, ab magni cupiditate similique sint
+                optio velit cumque. Officia sint impedit, molestiae sunt velit reprehenderit,
+                doloribus at fugiat cupiditate veritatis fuga, consequatur eum debitis labore
+                obcaecati eveniet et officiis aliquid consequuntur atque? Recusandae quas a suscipit
+                sint ab ipsam odio et sed.
+              </p>
+              <motion.div
+                whileTap={{ scale: 0.8 }}
+                whileHover={{ scale: 1.1 }}
+                className="more-button-wrapper"
+              >
+                <span className="more-button">Devam Et</span>
+                <span className="icon-wrapper">
+                  <MoreArrow />
+                </span>
+              </motion.div>
+            </div>
+          </div>
         </div>
-        <p>
-          <strong>
-            To add a new model to your app, <br />
-            run the following in your terminal:
-          </strong>
-        </p>
-        <pre>
-          <code>blitz generate all project name:string</code>
-        </pre>
-        <div style={{ marginBottom: "1rem" }}>(And select Yes to run prisma migrate)</div>
-        <div>
-          <p>
-            Then <strong>restart the server</strong>
-          </p>
-          <pre>
-            <code>Ctrl + c</code>
-          </pre>
-          <pre>
-            <code>blitz dev</code>
-          </pre>
-          <p>
-            and go to{" "}
-            <Link href="/projects">
-              <a>/projects</a>
-            </Link>
-          </p>
+      </section>
+      <section className="feature-work">
+        <div className="container">
+          <div className="feature-work-wrapper">
+            <div className="text-wrapper">
+              <h1 className="feature-work-title">Lorem ipsum dolor sit.</h1>
+              <h3 className="feature-work-subtitle">Lorem ipsum dolor sit amet.</h3>
+              <p className="feature-work-body">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem, maxime maiores
+                praesentium nobis nostrum est. Consequuntur ad consequatur ipsum dignissimos
+                eveniet, temporibus doloremque corrupti est quibusdam non harum quos quia odio,
+                aspernatur, minus asperiores libero dolores! Perspiciatis officiis, impedit
+                inventore commodi harum quaerat beatae nulla soluta minima laborum voluptas est
+                omnis. Ducimus, odio esse. Nam corrupti ad odit, ab magni cupiditate similique sint
+                optio velit cumque. Officia sint impedit, molestiae sunt velit reprehenderit,
+                doloribus at fugiat cupiditate veritatis fuga, consequatur eum debitis labore
+                obcaecati eveniet et officiis aliquid consequuntur atque? Recusandae quas a suscipit
+                sint ab ipsam odio et sed.
+              </p>
+              <motion.div
+                whileTap={{ scale: 0.8 }}
+                whileHover={{ scale: 1.1 }}
+                className="more-button-wrapper"
+              >
+                <span className="more-button">Devam Et</span>
+                <span className="icon-wrapper">
+                  <MoreArrow />
+                </span>
+              </motion.div>
+            </div>
+            <div className="image">
+              <Image
+                src="/about-work-1.jpg"
+                layout="fill"
+                objectPosition="bottom center"
+                objectFit="cover"
+                alt="logo"
+              />
+            </div>
+          </div>
         </div>
-        <div className="buttons" style={{ marginTop: "5rem" }}>
-          <a
-            className="button"
-            href="https://blitzjs.com/docs/getting-started?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-          <a
-            className="button-outline"
-            href="https://github.com/blitz-js/blitz"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Github Repo
-          </a>
-          <a
-            className="button-outline"
-            href="https://discord.blitzjs.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Discord Community
-          </a>
+      </section>
+      <section className="gallery">
+        <div className="container">
+          <div className="images-wrapper-1">
+            <div className="image">
+              <Image
+                src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjZ8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+                layout="fill"
+                objectPosition="bottom center"
+                objectFit="cover"
+                alt="logo"
+              />
+            </div>
+            <div className="image">
+              <Image
+                src="https://images.unsplash.com/photo-1502700807168-484a3e7889d0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njh8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+                layout="fill"
+                objectPosition="bottom center"
+                objectFit="cover"
+                alt="logo"
+              />
+            </div>
+            <div className="image">
+              <Image
+                src="https://images.unsplash.com/photo-1505488387362-48bc38155987?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fGxhd3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60"
+                layout="fill"
+                objectPosition="bottom center"
+                objectFit="cover"
+                alt="logo"
+              />
+            </div>
+            <div className="image">
+              <Image
+                src="https://images.unsplash.com/photo-1447968954315-3f0c44f7313c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+                layout="fill"
+                objectPosition="bottom center"
+                objectFit="cover"
+                alt="logo"
+              />
+            </div>
+            <div className="image">
+              <Image
+                src="https://images.unsplash.com/photo-1617203443952-6d2619f7ff4e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+                layout="fill"
+                objectPosition="bottom center"
+                objectFit="cover"
+                alt="logo"
+              />
+            </div>
+            <div className="image">
+              <Image
+                src="https://images.unsplash.com/photo-1620662736427-b8a198f52a4d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTIyfHxsYXd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+                layout="fill"
+                objectPosition="bottom center"
+                objectFit="cover"
+                alt="logo"
+              />
+            </div>
+            <motion.div
+              whileTap={{ scale: 0.8 }}
+              whileHover={{ scale: 1.1 }}
+              className="more-button-wrapper"
+            >
+              <span className="more-button">Devam Et</span>
+              <span className="icon-wrapper">
+                <MoreArrow />
+              </span>
+            </motion.div>
+          </div>
+          {/*
+          <div className="images-wrapper-2">
+            <div className="image">
+              <Image
+                src="https://images.unsplash.com/photo-1447968954315-3f0c44f7313c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+                layout="fill"
+                objectPosition="bottom center"
+                objectFit="cover"
+                alt="logo"
+              />
+            </div>
+            <div className="image">
+              <Image
+                src="https://images.unsplash.com/photo-1617203443952-6d2619f7ff4e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+                layout="fill"
+                objectPosition="bottom center"
+                objectFit="cover"
+                alt="logo"
+              />
+            </div>
+            <div className="image">
+              <Image
+                src="https://images.unsplash.com/photo-1620662736427-b8a198f52a4d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTIyfHxsYXd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+                layout="fill"
+                objectPosition="bottom center"
+                objectFit="cover"
+                alt="logo"
+              />
+            </div>
+          </div> */}
         </div>
-      </main>
-
-      <footer>
-        <a
-          href="https://blitzjs.com?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by Blitz.js
-        </a>
-      </footer>
-
-      <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;700&display=swap");
-
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: "Libre Franklin", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-            Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-        }
-
-        * {
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          box-sizing: border-box;
-        }
-        .container {
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main p {
-          font-size: 1.2rem;
-        }
-
-        p {
-          text-align: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 60px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: #45009d;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer a {
-          color: #f4f4f4;
-          text-decoration: none;
-        }
-
-        .logo {
-          margin-bottom: 2rem;
-        }
-
-        .logo img {
-          width: 300px;
-        }
-
-        .buttons {
-          display: grid;
-          grid-auto-flow: column;
-          grid-gap: 0.5rem;
-        }
-        .button {
-          font-size: 1rem;
-          background-color: #6700eb;
-          padding: 1rem 2rem;
-          color: #f4f4f4;
-          text-align: center;
-        }
-
-        .button.small {
-          padding: 0.5rem 1rem;
-        }
-
-        .button:hover {
-          background-color: #45009d;
-        }
-
-        .button-outline {
-          border: 2px solid #6700eb;
-          padding: 1rem 2rem;
-          color: #6700eb;
-          text-align: center;
-        }
-
-        .button-outline:hover {
-          border-color: #45009d;
-          color: #45009d;
-        }
-
-        pre {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          text-align: center;
-        }
-        code {
-          font-size: 0.9rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-            Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
+      </section>
     </div>
   )
 }
-
 Home.suppressFirstRenderFlicker = true
 Home.getLayout = (page) => <Layout title="Home">{page}</Layout>
 

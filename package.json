@@ -24,12 +24,16 @@
     ]
   },
   "dependencies": {
+    "@popmotion/popcorn": "0.4.4",
     "@prisma/client": "2.29.1",
+    "babel-plugin-inline-react-svg": "2.0.1",
+    "babel-plugin-module-resolver": "4.1.0",
     "blitz": "0.39.0",
-    "react-dom": "alpha",
+    "formik": "2.2.9",
+    "framer-motion": "4.1.17",
     "react": "alpha",
-    "zod": "3.7.2",
-    "formik": "2.2.9"
+    "react-dom": "alpha",
+    "zod": "3.7.2"
   },
   "devDependencies": {
     "@types/preview-email": "2.0.1",
