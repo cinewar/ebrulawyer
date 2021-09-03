@@ -11,4 +11,9 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
+  @media (max-width: 768px) {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
