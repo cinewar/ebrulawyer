@@ -2,9 +2,13 @@
 @import "./pageComponentStyle/navbar.scss";
 @import "./pageComponentStyle/home.scss";
 @import "./pageComponentStyle/footer.scss";
+@import "./pageComponentStyle/about.scss";
+@import "./pageComponentStyle/gallery.scss";
+@import "./pageComponentStyle/contact.scss";
 
 body {
   font-family: Poppins;
   margin: 0;
   padding: 0;
+  position: relative;
 }

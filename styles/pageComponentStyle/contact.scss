@@ -1,0 +1,72 @@
+$primary-color: #ff8066;
+
+.contact-page {
+  min-height: 100vh;
+  .gallery {
+    background: rgba(227, 253, 231, 0.43);
+  }
+  .contact-section {
+    background: #fbeae9;
+    min-height: 100vh;
+    .container {
+      padding: 80px 80px;
+      display: flex;
+      gap: 2vw;
+      & > * {
+        flex-basis: 100%;
+      }
+      .text {
+        margin-top: 100px;
+        margin-right: 15px;
+        .title {
+          font-family: Poppins;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 36px;
+          line-height: 40px;
+          /* identical to box height */
+
+          text-transform: uppercase;
+
+          color: #ff8066;
+        }
+        hr {
+          margin: 0;
+          color: #ff8066;
+        }
+        .subtitle {
+          font-family: Poppins;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 28px;
+          line-height: 28px;
+          /* identical to box height */
+
+          letter-spacing: 0.085em;
+          text-transform: capitalize;
+
+          color: #ff8066;
+          margin: 0;
+          border-bottom: 1px solid $primary-color;
+        }
+        .body {
+          font-family: Poppins;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 28px;
+          line-height: 36px;
+          /* identical to box height */
+
+          letter-spacing: 0.085em;
+          text-transform: lowercase;
+
+          color: #74465b;
+          margin: 5px 0 15px 0;
+        }
+      }
+      .img {
+        display: flex;
+      }
+    }
+  }
+}

@@ -1,0 +1,179 @@
+.about {
+  min-height: 100vh;
+}
+
+.about .hero-section {
+  min-height: 100vh;
+  background: #fbeae9;
+  padding: 0 80px;
+}
+
+.about .hero-section .container {
+  padding: 80px 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 7fr 5fr;
+      grid-template-columns: 7fr 5fr;
+  grid-gap: 15px;
+}
+
+.about .hero-section .container .text-part {
+  margin-top: 120px;
+}
+
+.about .hero-section .container .text-part .title {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 8px;
+  /* identical to box height */
+  text-transform: uppercase;
+  color: #ff8066;
+  margin: 0;
+  padding: 0;
+}
+
+.about .hero-section .container .text-part .subtitle {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  text-transform: capitalize;
+  color: #ff8066;
+}
+
+.about .hero-section .container .text-part .body {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.085em;
+  text-transform: capitalize;
+  color: rgba(58, 0, 30, 0.7);
+}
+
+.about .hero-section .container .image-part {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.about .part-2 {
+  background: rgba(227, 253, 231, 0.43);
+  padding: 0 80px;
+}
+
+.about .part-2 .container {
+  padding: 40px 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5fr 7fr;
+      grid-template-columns: 5fr 7fr;
+  grid-gap: 15px;
+}
+
+.about .part-2 .container .text-part {
+  margin-top: 40px;
+}
+
+.about .part-2 .container .text-part .title {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 8px;
+  /* identical to box height */
+  text-transform: uppercase;
+  color: #ff8066;
+  margin: 0;
+  padding: 0;
+}
+
+.about .part-2 .container .text-part .subtitle {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  text-transform: capitalize;
+  color: #ff8066;
+}
+
+.about .part-2 .container .text-part .body {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.085em;
+  text-transform: capitalize;
+  color: rgba(58, 0, 30, 0.7);
+}
+
+.about .part-2 .container .image-part {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.about .part-3 {
+  background: #fbeae9;
+  padding: 0 80px;
+}
+
+.about .part-3 .container {
+  padding: 40px 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 7fr 5fr;
+      grid-template-columns: 7fr 5fr;
+  grid-gap: 15px;
+}
+
+.about .part-3 .container .text-part {
+  margin-top: 40px;
+}
+
+.about .part-3 .container .text-part .title {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 8px;
+  /* identical to box height */
+  text-transform: uppercase;
+  color: #ff8066;
+  margin: 0;
+  padding: 0;
+}
+
+.about .part-3 .container .text-part .subtitle {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  text-transform: capitalize;
+  color: #ff8066;
+}
+
+.about .part-3 .container .text-part .body {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.085em;
+  text-transform: capitalize;
+  color: rgba(58, 0, 30, 0.7);
+}
+
+.about .part-3 .container .image-part {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=about.css.map */

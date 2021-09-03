@@ -7,6 +7,7 @@ import { ReactComponent as LeftArrow } from "../../public/left-arrow.svg"
 import { ReactComponent as MoreArrow } from "../../public/more-arrow.svg"
 import { AnimatePresence, motion } from "framer-motion"
 import { wrap } from "@popmotion/popcorn"
+import Gallery from "app/core/components/common/Gallery"
 
 /*
  * This file is just for a pleasant getting started page for your new app.
@@ -80,7 +81,6 @@ const Home: BlitzPage = () => {
       setSeconds((seconds) => seconds + 1)
       console.log(seconds)
       setPage([page + 1, 1])
-      console.log(page, direction)
     }, 6000)
     return () => clearInterval(interval)
   }, [page])
@@ -115,6 +115,7 @@ const Home: BlitzPage = () => {
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={1}
+              className="hero-container"
             >
               <div className="hero-text-wrapper">
                 <h1 className="hero-title">{newCards[imageIndex]?.title}</h1>
@@ -253,110 +254,11 @@ const Home: BlitzPage = () => {
           </div>
         </div>
       </section>
-      <section className="gallery">
-        <div className="container">
-          <div className="images-wrapper-1">
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjZ8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-            </div>
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1502700807168-484a3e7889d0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njh8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-            </div>
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1505488387362-48bc38155987?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fGxhd3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-            </div>
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1447968954315-3f0c44f7313c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-            </div>
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1617203443952-6d2619f7ff4e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-            </div>
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1620662736427-b8a198f52a4d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTIyfHxsYXd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-            </div>
-            <motion.div
-              whileTap={{ scale: 0.8 }}
-              whileHover={{ scale: 1.1 }}
-              className="more-button-wrapper"
-            >
-              <span className="more-button">Devam Et</span>
-              <span className="icon-wrapper">
-                <MoreArrow />
-              </span>
-            </motion.div>
-          </div>
-          {/*
-          <div className="images-wrapper-2">
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1447968954315-3f0c44f7313c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-            </div>
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1617203443952-6d2619f7ff4e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-            </div>
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1620662736427-b8a198f52a4d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTIyfHxsYXd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-            </div>
-          </div> */}
-        </div>
-      </section>
+      <Gallery />
     </div>
   )
 }
 Home.suppressFirstRenderFlicker = true
-Home.getLayout = (page) => <Layout title="Home">{page}</Layout>
+Home.getLayout = (page) => <Layout title="Anasayfa">{page}</Layout>
 
 export default Home
