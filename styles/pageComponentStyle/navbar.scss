@@ -56,12 +56,13 @@ $primary-color: #ff8066;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 5px;
+      padding: 0 0px;
       .logo {
         display: flex;
         align-items: center;
         z-index: 1;
         width: 50px;
+        padding-left: 5px;
       }
       .menu {
         width: 35px;
