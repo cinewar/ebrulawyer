@@ -154,4 +154,172 @@ $primary-color: #ff8066;
       }
     }
   }
+  @media (max-width: 768px) {
+    min-height: auto;
+    .hero-section {
+      min-height: auto;
+      background: #fbeae9;
+      padding: 0 5px 10px 5px;
+      .container {
+        padding: 0px 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 15px;
+        .text-part {
+          margin-top: 80px;
+          .title {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 8px;
+            /* identical to box height */
+
+            text-transform: uppercase;
+            color: $primary-color;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+          }
+          .subtitle {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 18px;
+            text-transform: capitalize;
+
+            color: #ff8066;
+          }
+          .body {
+            font-family: Poppins;
+            font-style: normal;
+            font-size: 12px;
+            line-height: 15px;
+            letter-spacing: 0.085em;
+
+            text-transform: capitalize;
+
+            color: rgba(58, 0, 30, 0.7);
+            margin: 0;
+            padding: 0;
+          }
+        }
+        .image-part {
+          display: flex;
+        }
+      }
+    }
+
+    .part-2 {
+      background: rgba(227, 253, 231, 0.43);
+      padding: 0 5px;
+      .container {
+        padding: 10px 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 15px;
+        .text-part {
+          order: 1;
+          margin-top: 15px;
+          .title {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 8px;
+            /* identical to box height */
+
+            text-transform: uppercase;
+            color: $primary-color;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+          }
+          .subtitle {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 18px;
+            text-transform: capitalize;
+
+            color: #ff8066;
+          }
+          .body {
+            font-family: Poppins;
+            font-style: normal;
+            font-size: 12px;
+            line-height: 15px;
+            letter-spacing: 0.085em;
+
+            text-transform: capitalize;
+
+            color: rgba(58, 0, 30, 0.7);
+            margin: 0;
+            padding: 0;
+          }
+        }
+        .image-part {
+          order: 2;
+          display: flex;
+        }
+      }
+    }
+    .part-3 {
+      background: #fbeae9;
+      padding: 0 5px;
+      .container {
+        padding: 10px 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 15px;
+        .text-part {
+          order: 1;
+          margin-top: 15px;
+          .title {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 8px;
+            /* identical to box height */
+
+            text-transform: uppercase;
+            color: $primary-color;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+          }
+          .subtitle {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 18px;
+            text-transform: capitalize;
+
+            color: #ff8066;
+          }
+          .body {
+            font-family: Poppins;
+            font-style: normal;
+            font-size: 12px;
+            line-height: 15px;
+            letter-spacing: 0.085em;
+
+            text-transform: capitalize;
+
+            color: rgba(58, 0, 30, 0.7);
+            margin: 0;
+            padding: 0;
+          }
+        }
+        .image-part {
+          order: 2;
+          display: flex;
+        }
+      }
+    }
+  }
 }

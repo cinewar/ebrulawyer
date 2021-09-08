@@ -5,6 +5,7 @@
 @import "./pageComponentStyle/about.scss";
 @import "./pageComponentStyle/gallery.scss";
 @import "./pageComponentStyle/contact.scss";
+$primary-color: #ff8066;
 
 body {
   font-family: Poppins;
@@ -14,6 +15,45 @@ body {
   @media (max-width: 768px) {
     &::-webkit-scrollbar {
       display: none;
+    }
+    .dropNavbar-wrapper {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 128, 102, 0.26);
+      z-index: 245;
+      .dropNav {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background: #2a1911;
+        z-index: 246;
+        .buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          padding: 80px 5px 10px 5px;
+          button {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 36px;
+            /* identical to box height */
+
+            text-transform: uppercase;
+
+            color: #ffffff;
+            background: $primary-color;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            &.active {
+              color: $primary-color;
+              background: #fff;
+            }
+          }
+        }
+      }
     }
   }
 }

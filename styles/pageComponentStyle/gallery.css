@@ -300,7 +300,7 @@
 
 .show-photo-wrapper .image {
   position: relative;
-  padding-top: 700px;
+  padding-top: 50vw;
   display: block;
   width: 90%;
 }
@@ -318,5 +318,47 @@
 
 .show-photo-wrapper .close svg {
   width: 30px;
+}
+
+@media (max-width: 768px) {
+  .show-photo-wrapper {
+    padding: 5px;
+  }
+  .show-photo-wrapper .left {
+    position: absolute;
+    left: 10px;
+    top: 48%;
+    cursor: pointer;
+  }
+  .show-photo-wrapper .left svg {
+    width: 15px;
+  }
+  .show-photo-wrapper .right {
+    position: absolute;
+    right: 10px;
+    top: 48%;
+    cursor: pointer;
+  }
+  .show-photo-wrapper .right svg {
+    width: 15px;
+  }
+  .show-photo-wrapper .image {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-top: 70vw;
+  }
+  .show-photo-wrapper .image img {
+    border-radius: 8px;
+  }
+  .show-photo-wrapper .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  .show-photo-wrapper .close svg {
+    width: 30px;
+  }
 }
 /*# sourceMappingURL=gallery.css.map */

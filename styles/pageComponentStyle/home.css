@@ -37,8 +37,8 @@
 
 .home .hero .hero-text-wrapper .hero-body {
   font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 18px;
+  line-height: 30px;
   letter-spacing: 0.085em;
   text-transform: capitalize;
   width: 38%;
@@ -49,7 +49,7 @@
   position: absolute;
   bottom: 20px;
   right: 0;
-  z-index: 1000;
+  z-index: 5;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -383,7 +383,7 @@
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
-    line-height: 10px;
+    line-height: 15px;
     /* or 83% */
     text-transform: capitalize;
     color: #ff8066;
@@ -405,7 +405,7 @@
     position: absolute;
     bottom: 5px;
     right: 0;
-    z-index: 1000;
+    z-index: 5;
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -451,8 +451,8 @@
     cursor: pointer;
   }
   .home .hero .dots-sliderButtons .buttons-wrapper .slider-button svg {
-    width: 19px;
-    height: 19px;
+    width: 25px;
+    height: 25px;
   }
   .home .hero .carousel {
     position: absolute;
@@ -503,8 +503,8 @@
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
-    font-size: 17px;
-    line-height: 19px;
+    font-size: 18px;
+    line-height: 20px;
     /* identical to box height */
     text-transform: uppercase;
     margin: 0;
@@ -516,8 +516,8 @@
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
-    font-size: 13px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 25px;
     /* identical to box height */
     text-transform: capitalize;
     color: #ff8066;
@@ -525,12 +525,12 @@
   .home .about-work .container .about-work-wrapper .text-wrapper .about-work-body {
     margin: 0;
     padding: 0;
-    padding-bottom: 5px;
+    padding-bottom: 20px;
+    padding-top: 5px;
     font-family: Poppins;
     font-style: normal;
-    font-weight: 500;
-    font-size: 11px;
-    line-height: 13px;
+    font-size: 12px;
+    line-height: 15px;
     letter-spacing: 0.085em;
     text-transform: capitalize;
     color: rgba(58, 0, 30, 0.7);
@@ -547,7 +547,7 @@
         -ms-flex-align: center;
             align-items: center;
     position: absolute;
-    bottom: -10px;
+    bottom: -5px;
     -webkit-transition: 0.2s ease-out;
     transition: 0.2s ease-out;
     right: 3px;
@@ -623,8 +623,8 @@
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
-    font-size: 17px;
-    line-height: 19px;
+    font-size: 18px;
+    line-height: 20px;
     /* identical to box height */
     text-transform: uppercase;
     margin: 0;
@@ -636,8 +636,8 @@
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
-    font-size: 13px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 25px;
     /* identical to box height */
     text-transform: capitalize;
     color: #ff8066;
@@ -645,12 +645,12 @@
   .home .feature-work .container .feature-work-wrapper .text-wrapper .feature-work-body {
     margin: 0;
     padding: 0;
-    padding-bottom: 5px;
+    padding-bottom: 20px;
+    padding-top: 5px;
     font-family: Poppins;
     font-style: normal;
-    font-weight: 500;
-    font-size: 11px;
-    line-height: 13px;
+    font-size: 12px;
+    line-height: 15px;
     letter-spacing: 0.085em;
     text-transform: capitalize;
     color: rgba(58, 0, 30, 0.7);
@@ -667,7 +667,7 @@
         -ms-flex-align: center;
             align-items: center;
     position: absolute;
-    bottom: -10px;
+    bottom: -5px;
     -webkit-transition: 0.2s ease-out;
     transition: 0.2s ease-out;
     right: 3px;

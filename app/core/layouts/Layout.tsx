@@ -1,7 +1,8 @@
 import { ReactNode } from "react"
-import { Head } from "blitz"
+import { Head, useRouter } from "blitz"
 import Navbar from "app/core/components/common/Navbar"
 import Footer from "app/core/components/common/Footer"
+import { RecoilRoot } from "recoil"
 
 type LayoutProps = {
   title?: string
@@ -15,9 +16,11 @@ const Layout = ({ title, children }: LayoutProps) => {
         <title>{title || "ebru"}</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
-      <Navbar />
-      {children}
-      <Footer />
+      <RecoilRoot>
+        <Navbar />
+        {children}
+        <Footer />
+      </RecoilRoot>
     </>
   )
 }
