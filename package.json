@@ -32,8 +32,8 @@
     "blitz": "0.39.0",
     "formik": "2.2.9",
     "framer-motion": "4.1.17",
-    "react": "alpha",
-    "react-dom": "alpha",
+    "react": "18.0.0-alpha-cb8a50619-20210909",
+    "react-dom": "18.0.0-alpha-cb8a50619-20210909",
     "recoil": "0.4.1",
     "zod": "3.7.2"
   },
