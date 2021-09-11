@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
-@import "./pageComponentStyle/navbar.scss";
-@import "./pageComponentStyle/home.scss";
-@import "./pageComponentStyle/footer.scss";
-@import "./pageComponentStyle/about.scss";
-@import "./pageComponentStyle/gallery.scss";
-@import "./pageComponentStyle/contact.scss";
+@import "./pageComponentStyle/navbar";
+@import "./pageComponentStyle/home";
+@import "./pageComponentStyle/footer";
+@import "./pageComponentStyle/about";
+@import "./pageComponentStyle/gallery";
+@import "./pageComponentStyle/contact";
 $primary-color: #ff8066;
 
 body {

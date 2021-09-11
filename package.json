@@ -2,12 +2,13 @@
   "name": "ebru",
   "version": "1.0.0",
   "scripts": {
-    "dev": "blitz dev",
+    "dev": "blitz dev ",
     "build": "blitz build",
     "start": "blitz start",
     "studio": "blitz prisma studio",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test": "jest",
+    "watch-sass": "sass --watch styles/index.scss styles/index.css",
     "test:watch": "jest --watch",
     "prepare": "husky install"
   },

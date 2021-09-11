@@ -72,12 +72,14 @@ $primary-color: #ff8066;
       min-height: auto;
       .container {
         padding: 20px 5px;
+        padding-top: 50px;
         display: flex;
         flex-direction: column;
-        gap: 2vw;
+        gap: 1vw;
 
         .text {
-          margin-top: 70px;
+          order: 2;
+          margin-top: 20px;
           margin-right: 0px;
           .title {
             font-family: Poppins;
@@ -122,7 +124,12 @@ $primary-color: #ff8066;
           }
         }
         .img {
+          order: 1;
           display: flex;
+          justify-content: center;
+          svg {
+            width: 80%;
+          }
         }
       }
     }

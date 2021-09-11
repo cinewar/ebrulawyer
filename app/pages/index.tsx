@@ -85,20 +85,26 @@ const Home: BlitzPage = () => {
     return () => clearInterval(interval)
   }, [page])
 
+  const swipeConfidenceThreshold = 10000
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity
+  }
+
   return (
     <div className="home">
-      <section
-        // key={page}
-        // custom={direction}
-        // initial={{ opacity: 0 }}
-        // animate={{ opacity: 1 }}
-        // exit={{ opacity: 0 }}
-        // transition={{
-        //   opacity: { duration: 1.5 },
-        // }}
-        // drag="x"
-        // dragConstraints={{ left: 0, right: 0 }}
-        // dragElastic={1}
+      <motion.section
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={1}
+        onDragEnd={(e, { offset, velocity }) => {
+          const swipe = swipePower(offset.x, velocity.x)
+
+          if (swipe < -swipeConfidenceThreshold) {
+            paginate(1)
+          } else if (swipe > swipeConfidenceThreshold) {
+            paginate(-1)
+          }
+        }}
         className="hero"
       >
         {newCards.length > 0 && (
@@ -171,7 +177,7 @@ const Home: BlitzPage = () => {
             })}
           </div>
         </div>
-      </section>
+      </motion.section>
       <section className="about-work">
         <div className="container">
           <div className="about-work-wrapper">

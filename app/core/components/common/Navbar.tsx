@@ -19,14 +19,14 @@ const Navbar = () => {
     hidden: {
       opacity: 0,
       transition: {
-        delay: 0.5,
-        duration: 0.5,
+        delay: 0.3,
+        duration: 0.3,
       },
     },
     show: {
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
       },
     },
   }
@@ -34,14 +34,14 @@ const Navbar = () => {
     hidden: {
       opacity: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
       },
     },
     show: {
       opacity: 1,
       transition: {
-        delay: 0.5,
-        duration: 0.5,
+        delay: 0.3,
+        duration: 0.3,
       },
     },
   }
@@ -73,6 +73,7 @@ const Navbar = () => {
           <div className="menu">
             {showDropdown ? (
               <motion.span
+                style={{ display: "flex" }}
                 whileTap={{ scale: 0.8 }}
                 onClick={() => {
                   setShowDropdown(false)
@@ -82,6 +83,7 @@ const Navbar = () => {
               </motion.span>
             ) : (
               <motion.span
+                style={{ display: "flex" }}
                 whileTap={{ scale: 0.8 }}
                 onClick={() => {
                   setShowDropdown(true)
