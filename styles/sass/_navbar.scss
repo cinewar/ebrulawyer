@@ -5,15 +5,15 @@ $primary-color: #ff8066;
     position: absolute;
     top: 20px;
     left: 0;
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 80px;
     .logo {
       display: flex;
       align-items: center;
       z-index: 247;
+      margin-left: 80px;
     }
     .menu {
       display: none;
@@ -21,6 +21,13 @@ $primary-color: #ff8066;
     ul {
       margin: 0;
       padding: 0;
+    }
+    .login-key {
+      z-index: 100;
+      margin-right: 80px;
+      scale: 0.8;
+      display: flex;
+      cursor: pointer;
     }
     .link-wrapper {
       position: relative;
@@ -70,6 +77,7 @@ $primary-color: #ff8066;
         display: block;
         margin-right: 10px;
       }
+
       ul {
         margin: 0;
         padding: 0;

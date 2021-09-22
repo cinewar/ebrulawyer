@@ -1,0 +1,92 @@
+$primary-color: #3a69c6;
+$secondary-color: #ff9153;
+
+@mixin padding-xaxis() {
+  @media only screen and (max-width: 1100px) {
+    padding: 50px 60px;
+  }
+  @media only screen and (max-width: 960px) {
+    padding: 50px 30px;
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 30px 15px;
+  }
+  padding: 50px 175px;
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  overflow-y: scroll;
+
+  .modal {
+    box-shadow: 6px 6px 0px #ff9153;
+    padding: 40px 20px 20px 20px;
+    margin: 40px auto;
+    background: #fff;
+    width: 500px;
+    border-radius: 10px;
+    position: relative;
+    .close-modal-wrapper {
+      .close-modal {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        cursor: pointer;
+      }
+    }
+    .button-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 15px;
+      .button {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 17px;
+        line-height: 0px;
+        /* identical to box height */
+
+        color: #ffffff;
+        background: #0096ff;
+        border-radius: 5px;
+        min-width: 100px;
+        min-height: 33px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        cursor: pointer;
+        margin-left: 10px;
+        border: 2px solid #0096ff;
+        &:hover {
+          color: #0096ff;
+          background: #ffffff;
+          svg path {
+            fill: #0096ff;
+          }
+        }
+      }
+      .cancel {
+        border: 2px solid #ff0000;
+        background: #ff0000;
+        &:hover {
+          color: #ff0000;
+          background: #ffffff;
+          svg path {
+            fill: #ff0000;
+          }
+        }
+      }
+
+      .disabled {
+        opacity: 0.5;
+      }
+    }
+  }
+}

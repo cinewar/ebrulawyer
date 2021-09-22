@@ -25,7 +25,9 @@ const About: BlitzPage = () => {
             </p>
           </div>
           <div className="image-part">
-            <AboutPage1 />
+            <object>
+              <AboutPage1 />
+            </object>
           </div>
         </div>
       </section>

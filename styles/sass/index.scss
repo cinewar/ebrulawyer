@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+$primary-color: #ff8066;
+
+@import "./navbar";
+@import "./home";
+@import "./footer";
+@import "./about";
+@import "./gallery";
+@import "./contact";
+@import "./admin-navbar";
+@import "./admin-sidebar";
+@import "./dashboard-page";
+@import "./modal";
+@import "./login-page";
+@import "./loader";
+@import "./admin-aboutus-page";
+@import "./admin-features-page";
+@import "./admin-contact-us";
+
+body {
+  font-family: Poppins;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  @media (max-width: 768px) {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .dropNavbar-wrapper {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 128, 102, 0.26);
+      z-index: 245;
+      .dropNav {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background: #2a1911;
+        z-index: 246;
+        .buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          padding: 80px 5px 10px 5px;
+          button {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 36px;
+            /* identical to box height */
+
+            text-transform: uppercase;
+
+            color: #ffffff;
+            background: $primary-color;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            &.active {
+              color: $primary-color;
+              background: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.swal2-popup {
+  display: none;
+  position: relative;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 3px !important;
+  background: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  width: 404px !important;
+  border-radius: 7px 8px 8px 8px;
+  background: #f2f2f2;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+// .swal2-icon {
+//   margin: 0 !important;
+// }
+
+.swal2-title {
+  font-family: Poppins;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 28px;
+  text-align: center;
+  color: #999 !important;
+  padding: 0 !important;
+}
+
+.swal2-content {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  color: #999;
+  padding: 5px 0px;
+}
+
+.swal2-actions {
+  margin-top: 10px;
+}
+
+.swal2-styled.swal2-confirm {
+  color: white !important;
+  background-color: #80ff00 !important;
+  border: solid 2px #80ff00 !important;
+  border-radius: 3px;
+  min-width: 25px;
+  min-height: 25px !important;
+  padding: 0.425em 1.1em;
+  box-shadow: none !important;
+}
+
+.swal2-styled.swal2-cancel:hover {
+  color: red !important;
+  background: white !important;
+}
+
+.swal2-styled.swal2-cancel {
+  color: white !important;
+  background: red !important;
+  border: solid 2px red !important;
+  border-radius: 3px;
+  min-width: 25px;
+  min-height: 25px !important;
+  padding: 0.425em 1.1em;
+  box-shadow: none !important;
+}
+
+.swal2-styled.swal2-confirm:hover {
+  color: #80ff00 !important;
+  background: white !important;
+}
+
+.swal2-close {
+  font-size: 2.5em !important;
+  color: #999;
+  font-weight: bold;
+}
+
+.swal2-html-container {
+  margin: 0.5em 1.6em 0.3em !important;
+}
+
+.swal2-icon {
+  width: 4em !important;
+  height: 4em !important;
+}
+
+.swal2-icon .swal2-icon-content {
+  font-size: 3em !important;
+}

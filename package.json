@@ -8,7 +8,7 @@
     "studio": "blitz prisma studio",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test": "jest",
-    "watch-sass": "sass --watch styles/index.scss styles/index.css",
+    "watch-sass": "sass --watch styles/sass/index.scss styles/index.css",
     "test:watch": "jest --watch",
     "prepare": "husky install"
   },
@@ -32,9 +32,15 @@
     "blitz": "0.39.0",
     "formik": "2.2.9",
     "framer-motion": "4.1.17",
+    "imtool": "1.1.4",
     "react": "18.0.0-alpha-cb8a50619-20210909",
     "react-dom": "18.0.0-alpha-cb8a50619-20210909",
+    "react-dropzone": "11.3.4",
     "recoil": "0.4.1",
+    "suneditor": "2.41.3",
+    "suneditor-react": "3.3.0",
+    "sweetalert2": "11.1.5",
+    "yup": "0.32.9",
     "zod": "3.7.2"
   },
   "devDependencies": {

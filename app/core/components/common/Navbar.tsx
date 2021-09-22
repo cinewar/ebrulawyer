@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useRecoilState } from "recoil"
 import { ReactComponent as OpenMenu } from "../../../../public/open-menu.svg"
 import { ReactComponent as CloseMenu } from "../../../../public/close-menu.svg"
+import { ReactComponent as LoginKey } from "../../../../public/login-key.svg"
 import { dropdownMenu } from "../../../../utils/global"
 
 const Navbar = () => {
@@ -70,6 +71,11 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
+          <Link href="/login">
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }} className="login-key">
+              <LoginKey />
+            </motion.div>
+          </Link>
           <div className="menu">
             {showDropdown ? (
               <motion.span
