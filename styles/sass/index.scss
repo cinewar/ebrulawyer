@@ -16,6 +16,7 @@ $primary-color: #ff8066;
 @import "./admin-aboutus-page";
 @import "./admin-features-page";
 @import "./admin-contact-us";
+@import "./admin-gallery";
 
 body {
   font-family: Poppins;
@@ -164,4 +165,68 @@ body {
 
 .swal2-icon .swal2-icon-content {
   font-size: 3em !important;
+}
+
+.dropzone {
+  height: 11rem;
+  border: 2px dashed salmon;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: rgba(128, 255, 0, 0.21);
+  font-size: 20px;
+  line-height: 23px;
+
+  color: #0096ff;
+  .active {
+    border: 2px solid rebeccapurple;
+  }
+}
+
+.thumbsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  .thumb {
+    display: inline-flex;
+    border-radius: 2px;
+    border: 1px solid #eaeaea;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    width: 100px;
+    height: 100px;
+    padding: 4px;
+    box-sizing: border-box;
+    .thumbInner {
+      display: flex;
+      min-width: 0;
+      overflow: hidden;
+      position: relative;
+      .img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+      }
+      .modify-button {
+        z-index: 2;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        .icon-wrapper {
+          margin: 0px 4px;
+          cursor: pointer;
+        }
+      }
+      &:hover .show {
+        display: flex;
+      }
+    }
+  }
 }

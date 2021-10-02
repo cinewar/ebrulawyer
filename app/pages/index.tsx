@@ -8,6 +8,9 @@ import { ReactComponent as MoreArrow } from "../../public/more-arrow.svg"
 import { AnimatePresence, motion } from "framer-motion"
 import { wrap } from "@popmotion/popcorn"
 import Gallery from "app/core/components/common/Gallery"
+import { useQuery } from "blitz"
+import getSlides from "app/slides/queries/getSlides"
+import getFeatures from "app/features/queries/getFeatures"
 
 /*
  * This file is just for a pleasant getting started page for your new app.
@@ -62,15 +65,21 @@ const Home: BlitzPage = () => {
   const [[page, direction], setPage] = useState([0, 0])
   const [newCards, setnewCards] = useState<any>([])
 
+  const [{ slides }] = useQuery(getSlides, {
+    orderBy: { id: "asc" },
+  })
+
   useEffect(() => {
-    setnewCards(cards)
+    setnewCards(slides)
   }, [])
 
-  const imageIndex = wrap(0, cards.length, page)
+  const [{ features }] = useQuery(getFeatures, {
+    orderBy: { id: "asc" },
+  })
+
+  const imageIndex = wrap(0, slides.length, page)
 
   const paginate = (newDirection) => {
-    console.log(page, newDirection)
-
     setPage([page + newDirection, newDirection])
   }
 
@@ -125,8 +134,11 @@ const Home: BlitzPage = () => {
             >
               <div className="hero-text-wrapper">
                 <h1 className="hero-title">{newCards[imageIndex]?.title}</h1>
-                <h3 className="hero-subtitle">{newCards[imageIndex]?.subtitle}</h3>
-                <p className="hero-body">{newCards[imageIndex]?.body}</p>
+                <h2 className="hero-subtitle">{newCards[imageIndex]?.subtitle}</h2>
+                <p
+                  className="hero-body"
+                  dangerouslySetInnerHTML={{ __html: newCards[imageIndex]?.body }}
+                ></p>
               </div>
               <div className="carousel">
                 <Image
@@ -134,7 +146,7 @@ const Home: BlitzPage = () => {
                   layout="fill"
                   objectPosition="bottom center"
                   objectFit="cover"
-                  alt="logo"
+                  alt={newCards[imageIndex]?.id}
                 />
               </div>
             </motion.div>
@@ -178,88 +190,40 @@ const Home: BlitzPage = () => {
           </div>
         </div>
       </motion.section>
-      <section className="about-work">
-        <div className="container">
-          <div className="about-work-wrapper">
-            <div className="image">
-              <Image
-                src="/about-work-1.jpg"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
+      {features.map((feature) => (
+        <>
+          <section className="work">
+            <div className="container">
+              <div className="wrapper">
+                <div className="image">
+                  <Image
+                    src={feature.img}
+                    layout="fill"
+                    objectPosition="bottom center"
+                    objectFit="cover"
+                    alt="logo"
+                  />
+                </div>
+                <div className="text-wrapper">
+                  <h1 className="title">{feature.title}</h1>
+                  <h2 className="subtitle">{feature.subtitle}</h2>
+                  <p className="body" dangerouslySetInnerHTML={{ __html: feature.body }}></p>
+                  <motion.div
+                    whileTap={{ scale: 0.8 }}
+                    whileHover={{ scale: 1.1 }}
+                    className="more-button-wrapper"
+                  >
+                    <span className="more-button">Devam Et</span>
+                    <span className="icon-wrapper">
+                      <MoreArrow />
+                    </span>
+                  </motion.div>
+                </div>
+              </div>
             </div>
-            <div className="text-wrapper">
-              <h1 className="about-work-title">Lorem ipsum dolor sit.</h1>
-              <h3 className="about-work-subtitle">Lorem ipsum dolor sit amet.</h3>
-              <p className="about-work-body">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem, maxime maiores
-                praesentium nobis nostrum est. Consequuntur ad consequatur ipsum dignissimos
-                eveniet, temporibus doloremque corrupti est quibusdam non harum quos quia odio,
-                aspernatur, minus asperiores libero dolores! Perspiciatis officiis, impedit
-                inventore commodi harum quaerat beatae nulla soluta minima laborum voluptas est
-                omnis. Ducimus, odio esse. Nam corrupti ad odit, ab magni cupiditate similique sint
-                optio velit cumque. Officia sint impedit, molestiae sunt velit reprehenderit,
-                doloribus at fugiat cupiditate veritatis fuga, consequatur eum debitis labore
-                obcaecati eveniet et officiis aliquid consequuntur atque? Recusandae quas a suscipit
-                sint ab ipsam odio et sed.
-              </p>
-              <motion.div
-                whileTap={{ scale: 0.8 }}
-                whileHover={{ scale: 1.1 }}
-                className="more-button-wrapper"
-              >
-                <span className="more-button">Devam Et</span>
-                <span className="icon-wrapper">
-                  <MoreArrow />
-                </span>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="feature-work">
-        <div className="container">
-          <div className="feature-work-wrapper">
-            <div className="text-wrapper">
-              <h1 className="feature-work-title">Lorem ipsum dolor sit.</h1>
-              <h3 className="feature-work-subtitle">Lorem ipsum dolor sit amet.</h3>
-              <p className="feature-work-body">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem, maxime maiores
-                praesentium nobis nostrum est. Consequuntur ad consequatur ipsum dignissimos
-                eveniet, temporibus doloremque corrupti est quibusdam non harum quos quia odio,
-                aspernatur, minus asperiores libero dolores! Perspiciatis officiis, impedit
-                inventore commodi harum quaerat beatae nulla soluta minima laborum voluptas est
-                omnis. Ducimus, odio esse. Nam corrupti ad odit, ab magni cupiditate similique sint
-                optio velit cumque. Officia sint impedit, molestiae sunt velit reprehenderit,
-                doloribus at fugiat cupiditate veritatis fuga, consequatur eum debitis labore
-                obcaecati eveniet et officiis aliquid consequuntur atque? Recusandae quas a suscipit
-                sint ab ipsam odio et sed.
-              </p>
-              <motion.div
-                whileTap={{ scale: 0.8 }}
-                whileHover={{ scale: 1.1 }}
-                className="more-button-wrapper"
-              >
-                <span className="more-button">Devam Et</span>
-                <span className="icon-wrapper">
-                  <MoreArrow />
-                </span>
-              </motion.div>
-            </div>
-            <div className="image">
-              <Image
-                src="/about-work-1.jpg"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        </>
+      ))}
       <Gallery />
     </div>
   )

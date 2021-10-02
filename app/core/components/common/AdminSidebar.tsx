@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import { ReactComponent as PhotosSvg } from "../../../../public/cards.svg"
 import { ReactComponent as AboutUsSvg } from "../../../../public/admin-about-us-icon.svg"
 import { ReactComponent as FeaturesSvg } from "../../../../public/admin-features-icon.svg"
-import { ReactComponent as ReferencesSvg } from "../../../../public/admin-references-icon.svg"
+import { ReactComponent as Gallery } from "../../../../public/gallery.svg"
 import { ReactComponent as ContactUsSvg } from "../../../../public/admin-contactus-icon.svg"
 import { motion } from "framer-motion"
 import { useRecoilState } from "recoil"
@@ -18,7 +18,6 @@ const Sidebar: BlitzPage = () => {
   const pathItems = router.pathname.split("/")
 
   const lastItemOfPath = pathItems[pathItems.length - 1]
-  console.log(lastItemOfPath)
 
   const sidebarVariants = {
     hover: { width: 230 },
@@ -130,7 +129,7 @@ const Sidebar: BlitzPage = () => {
             </div>
           </motion.a>
         </Link>
-        <Link href="/admin/references">
+        <Link href="/admin/gallery">
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.9 }}
@@ -138,11 +137,11 @@ const Sidebar: BlitzPage = () => {
               setButtonHover(true)
             }}
             onMouseLeave={() => setButtonHover(false)}
-            className={"button " + (lastItemOfPath === "references" ? "active" : "")}
+            className={"button " + (lastItemOfPath === "gallery" ? "active" : "")}
           >
-            <span className="button-text">Referanslar</span>
+            <span className="button-text">Foto Galeri</span>
             <div className="logo">
-              <ReferencesSvg />
+              <Gallery />
             </div>
           </motion.a>
         </Link>

@@ -5,7 +5,7 @@ interface GetFeaturesInput
   extends Pick<Prisma.FeatureFindManyArgs, "where" | "orderBy" | "skip" | "take"> {}
 
 export default resolver.pipe(
-  resolver.authorize(),
+  // resolver.authorize(),
   async ({ where, orderBy, skip = 0, take = 100 }: GetFeaturesInput) => {
     // TODO: in multi-tenant app, you must add validation to ensure correct tenant
     const {

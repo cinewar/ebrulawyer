@@ -62,7 +62,6 @@ const Main: BlitzPage = () => {
   const onDrop = useCallback(async (acceptedFiles) => {
     setCurrentFiles(null)
     setSendFiles(null)
-    console.log(acceptedFiles)
     setCurrentFiles(acceptedFiles[0])
     const tool = await fromImage(acceptedFiles[0])
     const img = await tool.scale(1920, 1080).toDataURL()
@@ -189,8 +188,6 @@ const Main: BlitzPage = () => {
               body: string().required("Bu alan boş bırakılamaz"),
             })}
             onSubmit={async (values) => {
-              console.log(values)
-
               // console.log(editId)
               const addCard = async () => {
                 setLoader(true)
@@ -237,7 +234,6 @@ const Main: BlitzPage = () => {
                           <Dropzone
                             onDrop={async (acceptedFiles) => {
                               let newImg = await onDrop(acceptedFiles)
-                              console.log(newImg)
                               setFieldValue("img", newImg)
                             }}
                             minSize={0}

@@ -1,4 +1,4 @@
-import { Image, Link } from "blitz"
+import { Image, Link, useQuery, usePaginatedQuery, useRouter } from "blitz"
 import { motion, AnimatePresence } from "framer-motion"
 import { ReactComponent as Look } from "../../../../public/search.svg"
 import { ReactComponent as Left } from "../../../../public/photo-left.svg"
@@ -6,98 +6,50 @@ import { ReactComponent as Right } from "../../../../public/photo-right.svg"
 import { ReactComponent as Close } from "../../../../public/close.svg"
 import { ReactComponent as MoreArrow } from "../../../../public/more-arrow.svg"
 import { useState } from "react"
+import getGalleries from "app/galleries/queries/getGalleries"
+
+const ITEMS_PER_PAGE = 6
 
 const Gallery = () => {
-  const [showPhoto, setShowPhoto] = useState(false)
+  const router = useRouter()
+  const page = Number(router.query.page) || 0
+  const [{ galleries, hasMore }] = usePaginatedQuery(getGalleries, {
+    orderBy: { id: "asc" },
+    skip: ITEMS_PER_PAGE * page,
+    take: ITEMS_PER_PAGE,
+  })
+
+  const goToPreviousPage = () => router.push({ query: { page: page - 1 } })
+  const goToNextPage = () => router.push({ query: { page: page + 1 } })
+
+  // const [{ galleries }, { refetch }] = useQuery(getGalleries, {
+  //   orderBy: { id: "asc" },
+  // })
+  // console.log(galleries)
+
+  const [[showPhoto, url], setShowPhoto] = useState([false, "defalult"])
   return (
     <>
       <section className="gallery">
         <div className="container">
           <div className="images-wrapper-1">
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjZ8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-              <div className="look-wrapper" onClick={() => setShowPhoto(true)}>
-                <span className="look">
-                  <Look />
-                </span>
+            {galleries.map((image) => (
+              <div className="image">
+                <Image
+                  src={image.img}
+                  layout="fill"
+                  // objectPosition="bottom center"
+                  objectFit="cover"
+                  alt="logo"
+                />
+                <div className="look-wrapper" onClick={() => setShowPhoto([true, image.img])}>
+                  <span className="look">
+                    <Look />
+                  </span>
+                </div>
               </div>
-            </div>
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1502700807168-484a3e7889d0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njh8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-              <div className="look-wrapper">
-                <span className="look">
-                  <Look />
-                </span>
-              </div>
-            </div>
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1505488387362-48bc38155987?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fGxhd3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-              <div className="look-wrapper">
-                <span className="look">
-                  <Look />
-                </span>
-              </div>
-            </div>
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1447968954315-3f0c44f7313c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-              <div className="look-wrapper">
-                <span className="look">
-                  <Look />
-                </span>
-              </div>
-            </div>
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1617203443952-6d2619f7ff4e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-              <div className="look-wrapper">
-                <span className="look">
-                  <Look />
-                </span>
-              </div>
-            </div>
-            <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1620662736427-b8a198f52a4d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTIyfHxsYXd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
-              <div className="look-wrapper">
-                <span className="look">
-                  <Look />
-                </span>
-              </div>
-            </div>
+            ))}
+
             <motion.div
               whileTap={{ scale: 0.8 }}
               whileHover={{ scale: 1.1 }}
@@ -114,6 +66,11 @@ const Gallery = () => {
       <AnimatePresence>
         {showPhoto && (
           <motion.div
+            onClick={(e) => {
+              if (e.currentTarget === e.target) {
+                setShowPhoto([false, "default"])
+              }
+            }}
             key="photo"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -125,7 +82,7 @@ const Gallery = () => {
           >
             <motion.span
               key="close"
-              onClick={() => setShowPhoto(false)}
+              onClick={() => setShowPhoto([false, "default"])}
               whileTap={{ scale: 0.8 }}
               whileHover={{ scale: 1.2 }}
               className="close"
@@ -133,13 +90,7 @@ const Gallery = () => {
               <Close />
             </motion.span>
             <div className="image">
-              <Image
-                src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjZ8fGxhd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                layout="fill"
-                objectPosition="bottom center"
-                objectFit="cover"
-                alt="logo"
-              />
+              <Image src={url} layout="fill" objectPosition="center" objectFit="cover" alt="logo" />
             </div>
             <motion.span whileTap={{ scale: 0.8 }} whileHover={{ scale: 1.2 }} className="left">
               <Left />

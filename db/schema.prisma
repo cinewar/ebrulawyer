@@ -102,3 +102,10 @@ model Contact {
   email     String
   facebook  String
 }
+
+model Gallery {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  img       String   @db.LongText
+}

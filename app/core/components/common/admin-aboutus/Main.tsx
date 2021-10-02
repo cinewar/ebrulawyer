@@ -137,8 +137,6 @@ const Main: BlitzPage = () => {
               body: string().required("Bu alan boş bırakılamaz"),
             })}
             onSubmit={async (values) => {
-              console.log(values)
-
               // console.log(editId)
               const addCard = async () => {
                 setLoader(true)

@@ -1,0 +1,137 @@
+$primary-color: #3a69c6;
+$secondary-color: #ff9153;
+
+@mixin padding-xaxis() {
+  @media only screen and (max-width: 1100px) {
+    padding: 50px 60px;
+  }
+  @media only screen and (max-width: 960px) {
+    padding: 50px 30px;
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 30px 15px;
+  }
+  padding: 50px 175px;
+}
+
+.gallery-page {
+  display: flex;
+
+  .main-part {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .navbar {
+      height: 50px;
+      background: #ffffff;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+      padding: 0 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .left {
+        display: flex;
+        cursor: pointer;
+      }
+
+      .right {
+        display: flex;
+        align-items: center;
+        padding-right: 5px;
+
+        .notification-wrapper {
+          padding: 0 15px;
+          position: relative;
+          .badge {
+            background: #ffffff;
+            border: 2px solid #0096ff;
+            box-sizing: border-box;
+            border-radius: 5px;
+            padding: 0 2px;
+            color: #0096ff;
+            font-size: 14px;
+            position: absolute;
+            top: -4px;
+            right: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .main {
+    padding: 3% 6%;
+    .main-wrapper {
+      .title-wrapper {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 3px solid #ec6c54;
+        padding-bottom: 4px;
+        align-items: flex-end;
+        .title {
+          font-family: Poppins;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 28px;
+          line-height: 33px;
+          /* identical to box height */
+
+          color: #0096ff;
+        }
+        .button {
+          font-family: Poppins;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 17px;
+          line-height: 20px;
+          /* identical to box height */
+
+          color: #ffffff;
+          background: #0096ff;
+          border-radius: 5px;
+          min-width: 138px;
+          min-height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 10px;
+          cursor: pointer;
+        }
+      }
+      .body-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 3%;
+        .image {
+          position: relative;
+          width: 100%;
+          padding-top: 100%;
+          display: block;
+          margin-top: 30px;
+          img {
+            border-radius: 15px;
+          }
+          .modify-button {
+            z-index: 2;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            .icon-wrapper {
+              margin: 0px 4px;
+              cursor: pointer;
+            }
+          }
+          &:hover .show {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+}

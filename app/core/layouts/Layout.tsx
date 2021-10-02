@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { ReactNode, Suspense } from "react"
 import { Head, useRouter } from "blitz"
 import Navbar from "app/core/components/common/Navbar"
 import Footer from "app/core/components/common/Footer"
@@ -16,10 +16,13 @@ const Layout = ({ title, children }: LayoutProps) => {
         <title>{title || "ebru"}</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
+
       <RecoilRoot>
-        <Navbar />
-        {children}
-        <Footer />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Navbar />
+          {children}
+          <Footer />
+        </Suspense>
       </RecoilRoot>
     </>
   )
