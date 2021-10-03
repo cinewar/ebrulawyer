@@ -9,3 +9,13 @@ export const sideState = atom({
   key: "sideState",
   default: true,
 })
+
+export const showPhoto = atom({
+  key: "showPhoto",
+  default: false,
+})
+
+export const photoUrl = atom({
+  key: "photoUrl",
+  default: "default",
+})

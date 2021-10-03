@@ -83,12 +83,8 @@ const Home: BlitzPage = () => {
     setPage([page + newDirection, newDirection])
   }
 
-  const [seconds, setSeconds] = useState(0)
-
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds((seconds) => seconds + 1)
-      console.log(seconds)
       setPage([page + 1, 1])
     }, 6000)
     return () => clearInterval(interval)
