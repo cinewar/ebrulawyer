@@ -6,6 +6,7 @@ import { RecoilRoot, useRecoilState } from "recoil"
 import { AnimatePresence, motion } from "framer-motion"
 import { photoUrl, showPhoto } from "utils/global"
 import { ReactComponent as Close } from "../../../public/close.svg"
+import Loader from "../components/common/Loader"
 
 type LayoutProps = {
   title?: string
@@ -26,7 +27,13 @@ const Layout = ({ title, children }: LayoutProps) => {
         <link rel="icon" href="/logo.svg" />
       </Head>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div>
+            <Loader />
+          </div>
+        }
+      >
         <Navbar />
         {children}
         <AnimatePresence>

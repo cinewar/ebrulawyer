@@ -11,6 +11,7 @@ import LoginForm from "app/auth/components/LoginForm"
 import "../../styles/index.css"
 import "suneditor/dist/css/suneditor.min.css"
 import { Suspense } from "react"
+import Loader from "app/core/components/common/Loader"
 
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
@@ -21,7 +22,13 @@ export default function App({ Component, pageProps }: AppProps) {
       onReset={useQueryErrorResetBoundary().reset}
     >
       {getLayout(
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div>
+              <Loader />
+            </div>
+          }
+        >
           <Component {...pageProps} />
         </Suspense>
       )}

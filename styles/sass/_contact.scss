@@ -66,6 +66,12 @@ $primary-color: #ff8066;
       }
       .img {
         display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
     @media (max-width: 768px) {

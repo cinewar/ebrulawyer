@@ -109,6 +109,7 @@ $secondary-color: #ff9153;
           .contact-svg {
             display: flex;
             justify-content: center;
+            align-items: center;
             .svg {
               width: 50%;
             }
@@ -119,6 +120,8 @@ $secondary-color: #ff9153;
               grid-template-columns: 1fr 1fr 1fr 1fr;
               column-gap: 3%;
               width: 100%;
+              padding-bottom: 10px;
+              border-bottom: 1px solid #eee;
               .item {
                 display: flex;
                 align-items: center;

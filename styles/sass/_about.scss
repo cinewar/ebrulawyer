@@ -52,6 +52,11 @@ $primary-color: #ff8066;
       .image-part {
         order: 1;
         display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          width: 100%;
+        }
       }
     }
   }
@@ -102,6 +107,11 @@ $primary-color: #ff8066;
       }
       .image-part {
         display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          width: 100%;
+        }
       }
     }
   }
@@ -153,6 +163,11 @@ $primary-color: #ff8066;
       }
       .image-part {
         display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          width: 100%;
+        }
       }
     }
   }
@@ -211,6 +226,11 @@ $primary-color: #ff8066;
         .image-part {
           order: 2;
           display: flex;
+          justify-content: center;
+          align-items: center;
+          svg {
+            width: 100%;
+          }
         }
       }
     }
@@ -266,6 +286,11 @@ $primary-color: #ff8066;
         .image-part {
           order: 2;
           display: flex;
+          justify-content: center;
+          align-items: center;
+          svg {
+            width: 100%;
+          }
         }
       }
     }
@@ -320,6 +345,11 @@ $primary-color: #ff8066;
         }
         .image-part {
           display: flex;
+          justify-content: center;
+          align-items: center;
+          svg {
+            width: 100%;
+          }
         }
       }
     }
