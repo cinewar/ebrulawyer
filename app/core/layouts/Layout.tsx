@@ -22,7 +22,9 @@ const Layout = ({ title, children }: LayoutProps) => {
         <title>{title || "ebru"}</title>
         <meta
           name="description"
-          content={"Balıkesirde her türlü dava için güvenle başvuracağınız avukatınız."}
+          content={
+            "Balıkesir avukat, balıkesir ceza avukatı, balıkesir boşanma avukatı, balıkesir idare avukatı, balıkesir miras avukatı."
+          }
         />
         <link rel="icon" href="/logo.svg" />
       </Head>
